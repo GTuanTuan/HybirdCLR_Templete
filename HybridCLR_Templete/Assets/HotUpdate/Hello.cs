@@ -11,8 +11,8 @@ public class Hello
         GameObject go = new GameObject("Test1");
         go.AddComponent<Print>();
         AssetLoader.Instance().LoadSceneAsync("Assets/Res/Entity/Scene/Test/Test.unity", (scene) =>
-         {
+        {
              Debug.Log($"load {scene.Result.Scene.name}");
-         });
+        });
     }
 }
