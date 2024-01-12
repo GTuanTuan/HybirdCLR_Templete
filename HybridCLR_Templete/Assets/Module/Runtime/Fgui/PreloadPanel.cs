@@ -7,7 +7,7 @@ namespace Templete
 {
     public class PreloadPanel : MonoBehaviour
     {
-        // Start is called before the first frame update
+        //// Start is called before the first frame update
         GComponent root;
         GLoader bg;
         GProgressBar bar;
