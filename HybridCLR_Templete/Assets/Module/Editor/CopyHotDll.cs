@@ -28,5 +28,30 @@ namespace Templete
             AssetDatabase.Refresh();
             Debug.Log("copy over");
         }
+        [MenuItem("Tools/Copy<T>Dll")]
+        public static void CopyTDll2Byte()
+        {
+            HybridCLR.Editor.Commands.CompileDllCommand.CompileDllActiveBuildTarget();
+            string sourceDir = $"{Application.dataPath.Replace("/Assets", "")}/HybridCLRData/AssembliesPostIl2CppStrip/WebGL/";
+            string destDir = $"{Application.dataPath}/Res/T/";
+            List<string> DllList = new List<string>()
+            {
+                "mscorlib.dll",
+                "System.dll",
+                "System.Core.dll",
+            };
+            foreach (string dll in DllList)
+            {
+                string sourcePath = sourceDir + dll;
+                string destPath = destDir + dll + ".bytes";
+                if (File.Exists(destPath))
+                {
+                    File.Delete(destPath);
+                }
+                File.Copy(sourcePath, destPath);
+            }
+            AssetDatabase.Refresh();
+            Debug.Log("copy over");
+        }
     }
 }

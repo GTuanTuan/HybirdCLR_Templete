@@ -7,33 +7,45 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Templete
 {
+    public enum DllType
+    {
+        T,
+        Hot
+    }
     public class LoadDll : MonoBehaviour
     {
-        public string HotDllKey;
+        public Dictionary<string, DllType> dllMap = new Dictionary<string, DllType>()
+        {
+            { "mscorlib",DllType.T },
+            { "System",DllType.T },
+            { "System.Core",DllType.T },
+            { "HotUpdate",DllType.Hot },
+        };
         void Start()
         {
-            AssetHandle assetHandle = AssetLoader.Instance().LoadAssetAsync(HotDllKey);
-            assetHandle.asyncOperationHandle.Completed+=((handle) =>
+            foreach (KeyValuePair<string, DllType> dll in dllMap)
             {
-                Assembly hotUpdateAss = Assembly.Load((handle.Result as TextAsset).bytes);
-                Type type = hotUpdateAss.GetType("Hello");
-                type.GetMethod("Run").Invoke(null, null);
-                //#if !UNITY_EDITOR
-                //                Assembly hotUpdateAss = Assembly.Load((handle.Result as TextAsset).bytes);
-                //#else
-                //                // Editor下无需加载，直接查找获得HotUpdate程序集
-                //                Assembly hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "HotUpdate");
-                //#endif
-            });
-
-
-
+                Addressables.LoadAssetAsync<TextAsset>(dll.Key).Completed += (AsyncOperationHandle<TextAsset> handle) =>
+                {
+                    if (dll.Value == DllType.T)
+                    {
+                        RuntimeApi.LoadMetadataForAOTAssembly((handle.Result as TextAsset).bytes, HomologousImageMode.SuperSet);
+                    }
+                    else
+                    {
+                        Assembly hotUpdateAss = Assembly.Load((handle.Result as TextAsset).bytes);
+                        Type type = hotUpdateAss.GetType("GameStart");
+                        type.GetMethod("Run").Invoke(null, null);
+                    }
+                };
+            }
         }
-
     }
 }
 

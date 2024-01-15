@@ -17,8 +17,23 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c7d826575ea70da4b9270e0b024450ee
   m_SerializeEntries:
-  - m_GUID: 9e4d0123d406f8a40b6bcee1d006d5f8
-    m_Address: Assets/Res/HotUpdate
+  - m_GUID: d43bfe76bbe658048a4f981b33405e07
+    m_Address: mscorlib
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0fb9291dc1489b4d96fd3bf0c2b2aeb
+    m_Address: HotUpdate
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdf74f11c4bccd64ea3f4f00f0c557b7
+    m_Address: System.Core
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04f73d0f694c7d940a3fad25f981090e
+    m_Address: System
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
