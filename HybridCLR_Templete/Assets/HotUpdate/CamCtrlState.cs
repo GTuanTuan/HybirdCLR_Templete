@@ -10,7 +10,7 @@ public class CamCtrlState : MonoBehaviour
     public GameObject player;
     public GameObject first;
     bool state = true;
-    bool mlock;
+    bool mlock = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,5 +44,6 @@ public class CamCtrlState : MonoBehaviour
         CinemachineBrain.SoloCamera = state ? third.GetComponentInChildren<CinemachineFreeLook>() : first.GetComponent<CinemachineVirtualCamera>();
         Cursor.visible = !mlock;
         Cursor.lockState = mlock ? CursorLockMode.Locked : CursorLockMode.None;
+        Debug.Log("third:"+state + ",lock:" + mlock);
     }
 }

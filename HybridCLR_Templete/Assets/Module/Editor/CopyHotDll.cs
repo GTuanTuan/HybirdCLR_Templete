@@ -14,7 +14,11 @@ namespace Templete
         public static void CopyDll2Byte()
         {
             HybridCLR.Editor.Commands.CompileDllCommand.CompileDllActiveBuildTarget();
-            string sourcePath = $"{Application.dataPath.Replace("/Assets","")}/HybridCLRData/HotUpdateDlls/StandaloneWindows64/HotUpdate.dll";
+            //StandaloneWindows64
+            //string sourcePath = $"{Application.dataPath.Replace("/Assets","")}/HybridCLRData/HotUpdateDlls/StandaloneWindows64/HotUpdate.dll";
+            //WebGL
+            string sourcePath = $"{Application.dataPath.Replace("/Assets", "")}/HybridCLRData/HotUpdateDlls/WebGL/HotUpdate.dll";
+
             string destPath = $"{Application.dataPath}/Res/HotUpdate/HotUpdate.dll.bytes";
             if (File.Exists(destPath))
             {
