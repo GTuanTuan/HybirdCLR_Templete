@@ -8,6 +8,13 @@ using UnityEngine.Networking;
 
 public class LoadingPanelCtrl : BaseController<LoadingPanelCtrl, LoadingPanel>
 {
+    public void Open(List<AsyncOperationHandle> handles, string msg = "", bool close = true)
+    {
+        Open((_ui) => {
+            Init(msg);
+            LoadingWithAddressable(handles, close);
+        });
+    }
     public void Open(AsyncOperationHandle handle, string msg = "", bool close = true)
     {
         Open((_ui) => {
@@ -33,6 +40,29 @@ public class LoadingPanelCtrl : BaseController<LoadingPanelCtrl, LoadingPanel>
         {
             ui.SetValue(Mathf.Lerp(ui.curValue, handle.PercentComplete, Time.deltaTime));
             return handle.IsDone;
+        },
+        () =>
+        {
+            if (close) Close();
+            return true;
+        });
+    }
+    void LoadingWithAddressable(List<AsyncOperationHandle> handles, bool close)
+    {
+        float progress = 0;
+        bool allComplete;
+        CheckTick.AddRule(() =>
+        {
+            progress = 0;
+            allComplete = true;
+            foreach (AsyncOperationHandle handle in handles)
+            {
+                progress += handle.PercentComplete;
+                if (!handle.IsDone) allComplete = false;
+            }
+            progress = progress / handles.Count;
+            ui.SetValue(Mathf.Lerp(ui.curValue, progress, Time.deltaTime));
+            return allComplete;
         },
         () =>
         {

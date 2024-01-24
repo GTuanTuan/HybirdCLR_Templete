@@ -45,39 +45,39 @@ namespace Templete
         public Vector3 target = Vector3.zero;
         public Vector3 gravityVelocity = Vector3.zero;
 
-        public void CheckMouseNav()
-        {
-            if (Cursor.lockState!= CursorLockMode.Locked&& Cursor.visible&& Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                RaycastHit raycastHit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if(Physics.Raycast(ray, out raycastHit))
-                {
-                    MoveByNav(raycastHit.point);
-                }                 
-            }
-            CheckNavDest();
-        }
-        public void CheckNavDest()
-        {
-            if( !nav.isStopped &&nav.speed> 0)
-            {
-                if (!nav.pathPending && nav.remainingDistance < 0.5f) ResetNav();
-            }
-        }
-        public void MoveByNav(Vector3 target)
-        {
-            nav.destination = target;
-            nav.isStopped = false;
-            nav.speed = 5;
-            onNav = true;
-        }
-        public void ResetNav()
-        {
-            nav.isStopped = true;
-            nav.speed = 0;
-            onNav = false;
-        }
+        //public void CheckMouseNav()
+        //{
+        //    if (Cursor.lockState!= CursorLockMode.Locked&& Cursor.visible&& Input.GetKeyDown(KeyCode.Mouse1))
+        //    {
+        //        RaycastHit raycastHit;
+        //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //        if(Physics.Raycast(ray, out raycastHit))
+        //        {
+        //            MoveByNav(raycastHit.point);
+        //        }                 
+        //    }
+        //    CheckNavDest();
+        //}
+        //public void CheckNavDest()
+        //{
+        //    if( !nav.isStopped &&nav.speed> 0)
+        //    {
+        //        if (!nav.pathPending && nav.remainingDistance < 0.5f) ResetNav();
+        //    }
+        //}
+        //public void MoveByNav(Vector3 target)
+        //{
+        //    nav.destination = target;
+        //    nav.isStopped = false;
+        //    nav.speed = 5;
+        //    onNav = true;
+        //}
+        //public void ResetNav()
+        //{
+        //    nav.isStopped = true;
+        //    nav.speed = 0;
+        //    onNav = false;
+        //}
         public void SetRenderer(bool value)
         {
             foreach (var renderer in renderers)
@@ -91,7 +91,7 @@ namespace Templete
             {
                 if (canMoveByKey)
                 {
-                    ResetNav();
+                    //ResetNav();
                     target = new Vector3(GetHorizontalVelocity(), 0, GetVerticalVelocity());
                     target *= GetSpeedUpMultiple();
                     target = forward_obj.transform.TransformDirection(target);
@@ -119,8 +119,8 @@ namespace Templete
         }
         public void Move()
         {
-            CheckMouseNav();
-            if (!onNav)
+            //CheckMouseNav();
+            //if (!onNav)
                 controller.Move(target * Time.deltaTime);
         }
         public void InitAnimData()

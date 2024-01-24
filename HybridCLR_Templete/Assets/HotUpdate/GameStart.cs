@@ -6,6 +6,7 @@ using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using System;
 
 public class GameStart : MonoBehaviour
 {
@@ -20,17 +21,42 @@ public class GameStart : MonoBehaviour
         };
         CheckTick.AddRule(
             () =>{ return FGUIManager.Instance().Ready&& asyncOperation.IsDone; },
-            () =>{LoadSceneTest();return true;}
+            () =>{ LoadArisRunTest();return true;}
         );
         GameObject go = new GameObject("Test1");
         go.AddComponent<Print>();
+    }
+    public static void LoadArisRunTest()
+    {
+        Action<AsyncOperationHandle> callback = (handle) =>
+        {
+            GameObject.Instantiate(handle.Result as GameObject);
+        };
+        List<AsyncOperationHandle> handles = new List<AsyncOperationHandle>();
+        AsyncOperationHandle natureHandle = Addressables.LoadAssetAsync<GameObject>("Assets/Res/Entity/Prefab/Nature/Nature.prefab");
+        AsyncOperationHandle buildingsHandle = Addressables.LoadAssetAsync<GameObject>("Assets/Res/Entity/Prefab/Buildings/Buildings.prefab");
+        AsyncOperationHandle envHandle = Addressables.LoadAssetAsync<GameObject>("Assets/Res/Entity/Prefab/Evn/Environment.prefab");
+        AsyncOperationHandle playerHandle = Addressables.LoadAssetAsync<GameObject>("Assets/Res/Entity/Prefab/Player/Player.prefab");
+        handles.Add(natureHandle);
+        handles.Add(buildingsHandle);
+        handles.Add(envHandle);
+        handles.Add(playerHandle);
+        LoadingPanelCtrl.Inst.Open(handles, $"Loading ArisRunTest");
+        natureHandle.Completed += callback;
+        buildingsHandle.Completed += callback;
+        envHandle.Completed += callback;
+        playerHandle.Completed += (handle) =>
+        {
+            GameObject.Instantiate(handle.Result as GameObject,new Vector3(137,12,122),Quaternion.identity);
+        };
     }
     public static void LoadSceneTest()
     {
         AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync("Assets/Res/Entity/Scene/Test/Test.unity",LoadSceneMode.Additive);
         LoadingPanelCtrl.Inst.Open(handle, $"Loading Test");
-        handle.Completed += (obj) =>
+        handle.Completed += (sceneHandle) =>
         {
+            SceneManager.SetActiveScene(sceneHandle.Result.Scene);
             TestDebug.Log("Test");
         };
     }
