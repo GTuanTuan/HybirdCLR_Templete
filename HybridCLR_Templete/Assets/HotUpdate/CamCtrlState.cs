@@ -44,6 +44,6 @@ public class CamCtrlState : MonoBehaviour
         CinemachineBrain.SoloCamera = state ? third.GetComponentInChildren<CinemachineFreeLook>() : first.GetComponent<CinemachineVirtualCamera>();
         Cursor.visible = !mlock;
         Cursor.lockState = mlock ? CursorLockMode.Locked : CursorLockMode.None;
-        Debug.Log("third:"+state + ",lock:" + mlock);
+        TestDebug.Log("third:"+state + ",lock:" + mlock);
     }
 }

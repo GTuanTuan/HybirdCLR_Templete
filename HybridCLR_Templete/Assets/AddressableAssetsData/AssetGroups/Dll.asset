@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: HotUpdate
+  m_Name: Dll
   m_EditorClassIdentifier: 
-  m_GroupName: HotUpdate
+  m_GroupName: Dll
   m_Data:
     m_SerializedData: []
-  m_GUID: c7d826575ea70da4b9270e0b024450ee
+  m_GUID: aeca4aeac6760cd4d8070a634f66ee10
   m_SerializeEntries:
   - m_GUID: d43bfe76bbe658048a4f981b33405e07
     m_Address: mscorlib
@@ -41,5 +41,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: bf83bc24457864642bb2854b17be23f7, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: ce078a5ba445c7340b6254801ecabc18, type: 2}
-    - {fileID: 11400000, guid: 4fece8eea64da6e439a765be6d544532, type: 2}
+    - {fileID: 11400000, guid: 4a4dbb4a601f5934b99c7ea862cef7ae, type: 2}
+    - {fileID: 11400000, guid: 437d08b0147592346ad062df3a647cc0, type: 2}

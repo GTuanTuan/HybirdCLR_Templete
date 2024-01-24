@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 namespace Templete
 {
     public class FGUISetting : ScriptableObject
     {
-        public string AddressableKeyFormat = "Assets/Res/ui/";
+        public string AddressableKeyFormat = "Assets/Res/UI/";
 
         public Font[] fonts;
 
@@ -30,8 +31,7 @@ namespace Templete
                 {
                     if (setting == null && ready == false)
                     {
-                        AssetHandle assetHandle = AssetLoader.Instance().LoadAssetAsync<FGUISetting>("Settings/FGUISetting.asset");
-                        assetHandle.asyncOperationHandle.Completed += (handle) =>
+                        Addressables.LoadAssetAsync<FGUISetting>("Settings/FGUISetting.asset").Completed += (handle) =>
                         {
                             setting = (FGUISetting)handle.Result;
                             callback?.Invoke(setting);
@@ -50,7 +50,7 @@ namespace Templete
         }
         public static string GetKeyByPkgName(string pkgName)
         {
-            return setting.AddressableKeyFormat +"/"+ pkgName.ToLower() + "/" + pkgName;
+            return setting.AddressableKeyFormat +"/"+ pkgName + "/" + pkgName;
         }
         public static string GetPkgNameByKey(string key)
         {

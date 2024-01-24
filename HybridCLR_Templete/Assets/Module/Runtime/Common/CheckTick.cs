@@ -117,7 +117,7 @@ namespace Templete
 
         private void Tick()
         {
-            if (AfterInterval() && functions.Count > 0)
+            if ( functions.Count > 0)
             {
                 LinkedListNode<CheckTickFunctions> node = functions.First;
                 while (node != null)

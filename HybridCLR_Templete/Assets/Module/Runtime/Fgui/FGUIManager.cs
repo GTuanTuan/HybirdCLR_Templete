@@ -4,6 +4,7 @@ using UnityEngine;
 using FairyGUI;
 using System;
 using System.Text;
+using UnityEngine.AddressableAssets;
 
 namespace Templete
 {
@@ -95,6 +96,7 @@ namespace Templete
                 GComponent com = new GComponent();
                 com.gameObjectName = layer;
                 com.name = layer;
+                com.fairyBatching = true;
                 GRoot.inst.AddChild(com);
             }
         }
@@ -111,7 +113,7 @@ namespace Templete
             {
                 return null;
             }
-            object res = AssetLoader.Instance().LoadAsset<object>(key + extension).assetData.asset;
+            object res = Addressables.LoadAssetAsync<object>(key + extension).WaitForCompletion();
             if (res == null)
             {
                 Debug.LogError($"FGUIº”‘ÿ{key}{extension} ß∞‹");
@@ -124,8 +126,7 @@ namespace Templete
             {
                 return;
             }
-            AssetHandle assetHandle = AssetLoader.Instance().LoadAssetAsync<object>(setting.AddressableKeyFormat+"/"+ pkgName.ToLower() +"/"+ name + extension);
-            assetHandle.asyncOperationHandle.Completed += (_handle) =>
+            Addressables.LoadAssetAsync<object>(setting.AddressableKeyFormat+"/"+ pkgName +"/"+ name + extension).Completed += (_handle) =>
             {
                 object res = _handle.Result;
                 if (res == null)
@@ -156,8 +157,7 @@ namespace Templete
                 }
                 else
                 {
-                    AssetHandle assetHandle = AssetLoader.Instance().LoadAssetAsync<TextAsset>(key + "_fui.bytes");
-                    assetHandle.asyncOperationHandle.Completed += (_handle) =>
+                    Addressables.LoadAssetAsync< TextAsset>(key + "_fui.bytes").Completed += (_handle) =>
                     {
                         byte[] descData = (_handle.Result as TextAsset).bytes;
                         UIPackage.AddPackage(descData, pkgName, (string name, string extension, Type type, PackageItem item) =>

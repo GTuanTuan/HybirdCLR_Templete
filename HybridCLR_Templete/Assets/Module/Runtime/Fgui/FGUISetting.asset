@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9fa63cc0b920642932c9467c78c02c, type: 3}
   m_Name: FGUISetting
   m_EditorClassIdentifier: 
-  AddressableKeyFormat: Assets/Res/ui
+  AddressableKeyFormat: Assets/Res/UI
   fonts:
   - {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   defaultResolution: {x: 1920, y: 1080}
