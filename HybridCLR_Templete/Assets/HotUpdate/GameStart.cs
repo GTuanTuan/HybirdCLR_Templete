@@ -28,6 +28,7 @@ public class GameStart : MonoBehaviour
     }
     public static void LoadArisRunTest()
     {
+        Camera.main.transform.position = new Vector3(137, 12, 122);
         Action<AsyncOperationHandle> callback = (handle) =>
         {
             GameObject.Instantiate(handle.Result as GameObject);
@@ -45,10 +46,13 @@ public class GameStart : MonoBehaviour
         natureHandle.Completed += callback;
         buildingsHandle.Completed += callback;
         envHandle.Completed += callback;
-        playerHandle.Completed += (handle) =>
-        {
-            GameObject.Instantiate(handle.Result as GameObject,new Vector3(137,12,122),Quaternion.identity);
-        };
+        CheckTick.AddRule(
+            () => { return natureHandle.IsDone && buildingsHandle.IsDone && envHandle.IsDone && playerHandle.IsDone; },
+            () => {
+                GameObject.Instantiate(playerHandle.Result as GameObject, new Vector3(137, 12, 122), Quaternion.identity);
+                return true;
+            }
+        );
     }
     public static void LoadSceneTest()
     {

@@ -39,7 +39,11 @@ namespace Templete
                     }
                     else
                     {
+#if !UNITY_EDITOR
                         Assembly hotUpdateAss = Assembly.Load((handle.Result as TextAsset).bytes);
+#else
+                        Assembly hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "HotUpdate");
+#endif
                         Type type = hotUpdateAss.GetType("GameStart");
                         type.GetMethod("Run").Invoke(null, null);
                     }
