@@ -17,8 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 938ff0ed3ea8902439007d07e979fe0a
   m_SerializeEntries:
-  - m_GUID: 40e026fbdb264a24d8972df8906db40a
-    m_Address: Assets/Res/Entity/Scene
+  - m_GUID: fa2f3abf2b95373479040f6b9e2bb8df
+    m_Address: Assets/Res/Entity/Scene/Aris_Run
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 20d401147a1254f40ad17b7b7bc4712f
+    m_Address: Assets/Res/Entity/Scene/Test
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -17,8 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 300fe84d345f04048b8a25a108662bb5
   m_SerializeEntries:
-  - m_GUID: 7bb84332a1fb4854485fa86336b18e2f
-    m_Address: Assets/Res/UI
+  - m_GUID: 15837e34895187a4e8814cc5ceca1921
+    m_Address: Assets/Res/UI/Main
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf391dabd3d31fd4f98b1b9c632cadbd
+    m_Address: Assets/Res/UI/Yango
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
