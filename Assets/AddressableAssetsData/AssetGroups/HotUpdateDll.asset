@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: HotUpdateDll
+  m_EditorClassIdentifier: 
+  m_GroupName: HotUpdateDll
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b16987186b9de3a4cbae598129ce28a8
+  m_SerializeEntries:
+  - m_GUID: d0fb9291dc1489b4d96fd3bf0c2b2aeb
+    m_Address: Assets/Res/HotUpdate/HotUpdate.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dll
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d43bfe76bbe658048a4f981b33405e07
+    m_Address: Assets/Res/T/mscorlib.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dll_T
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdf74f11c4bccd64ea3f4f00f0c557b7
+    m_Address: Assets/Res/T/System.Core.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dll_T
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04f73d0f694c7d940a3fad25f981090e
+    m_Address: Assets/Res/T/System.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Dll_T
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bf83bc24457864642bb2854b17be23f7, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c3968cf2d7554734987e77c09f6d0eb9, type: 2}
+    - {fileID: 11400000, guid: a57a6c4ec5e38f54492d2db8aca0cd17, type: 2}

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Prefab
+  m_EditorClassIdentifier: 
+  m_GroupName: Prefab
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 3758e5610eb67b542b4c8a34f30d48a0
+  m_SerializeEntries:
+  - m_GUID: 9ccb22ad769a42d45ab78ab1531306d6
+    m_Address: Assets/Res/Entity/Prefab/Buildings/Buildings.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - building
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4280409632f90c24bb35c7c1d7c9f390
+    m_Address: Assets/Res/Entity/Prefab/Player/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddd0b5155d5517b49874c1c506b21943
+    m_Address: Assets/Res/Entity/Prefab/Nature/Nature.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - nature
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7ddeb928169b6049a0b4e08531152f6
+    m_Address: Assets/Res/Entity/Prefab/Evn/Environment.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - env
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bf83bc24457864642bb2854b17be23f7, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 02a5e0be97781114aab4165a77435f5e, type: 2}
+    - {fileID: 11400000, guid: 488559316fe3f6a4885971d7ad655828, type: 2}
